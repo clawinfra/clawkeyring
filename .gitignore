@@ -1,0 +1,5 @@
+build/
+coverage.out
+coverage.html
+*.tmp
+.DS_Store
