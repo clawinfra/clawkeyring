@@ -48,16 +48,16 @@ func DefaultConfig() Config {
 
 // Manager watches for NewEra events and rotates session keys.
 type Manager struct {
-	ks          *keystore.Keystore
-	inj         *injector.Injector
-	auditLogger *audit.Logger
-	subscriber  EraSubscriber
-	generator   KeyGenerator
-	cfg         Config
-	mu          sync.RWMutex
-	lastEra     uint32
+	ks           *keystore.Keystore
+	inj          *injector.Injector
+	auditLogger  *audit.Logger
+	subscriber   EraSubscriber
+	generator    KeyGenerator
+	cfg          Config
+	mu           sync.RWMutex
+	lastEra      uint32
 	lastRotation *keyring.RotationRecord
-	logger      *slog.Logger
+	logger       *slog.Logger
 }
 
 // New creates a new rotation Manager.

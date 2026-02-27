@@ -41,10 +41,10 @@ type StatusRequest struct{}
 
 // StatusResponse is the response for GetStatus.
 type StatusResponse struct {
-	Keys        []keyring.KeyEntry      `json:"keys"`
+	Keys         []keyring.KeyEntry      `json:"keys"`
 	LastRotation *keyring.RotationRecord `json:"last_rotation,omitempty"`
-	LastEra     uint32                  `json:"last_era"`
-	AgentPubKey string                  `json:"agent_pub_key"`
+	LastEra      uint32                  `json:"last_era"`
+	AgentPubKey  string                  `json:"agent_pub_key"`
 }
 
 // Config holds server configuration.
