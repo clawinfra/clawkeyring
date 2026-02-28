@@ -57,11 +57,6 @@ func successResponse() string {
 	return `{"jsonrpc":"2.0","id":1,"result":null}`
 }
 
-func errorResponse(code int, msg string) string {
-	return `{"jsonrpc":"2.0","id":1,"error":{"code":` +
-		string(rune('0'+code%10)) + `,"message":"` + msg + `"}}`
-}
-
 func TestInsertKeySuccess(t *testing.T) {
 	mock := &mockHTTPClient{
 		responses: []mockResponse{

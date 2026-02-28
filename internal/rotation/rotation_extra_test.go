@@ -24,16 +24,6 @@ func (f *failHTTPClient) Post(_ string, _ string, _ io.Reader) (*http.Response, 
 	return nil, io.ErrUnexpectedEOF
 }
 
-// rpcErrHTTPClient returns an RPC error.
-type rpcErrHTTPClient struct{}
-
-func (r *rpcErrHTTPClient) Post(_ string, _ string, _ io.Reader) (*http.Response, error) {
-	return &http.Response{
-		StatusCode: 200,
-		Body:       io.NopCloser(strings.NewReader(`{"jsonrpc":"2.0","id":1,"error":{"code":-32000,"message":"insert failed"}}`)),
-	}, nil
-}
-
 func TestManagerRotateInjectionFailure(t *testing.T) {
 	dir := t.TempDir()
 	ks, err := keystore.Init(dir)
