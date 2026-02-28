@@ -13,17 +13,20 @@ const (
 	KeyTypeGRANDPA KeyType = "gran"
 	// KeyTypeImOnline is the ImOnline liveness key (sr25519).
 	KeyTypeImOnline KeyType = "imon"
+	// KeyTypeAura is the Aura block production key (sr25519).
+	// Used by Aura-based Substrate chains (e.g. ClawChain staging).
+	KeyTypeAura KeyType = "aura"
 )
 
 // AllKeyTypes returns all supported session key types.
 func AllKeyTypes() []KeyType {
-	return []KeyType{KeyTypeBABE, KeyTypeGRANDPA, KeyTypeImOnline}
+	return []KeyType{KeyTypeBABE, KeyTypeGRANDPA, KeyTypeImOnline, KeyTypeAura}
 }
 
 // Valid reports whether k is a recognised KeyType.
 func (k KeyType) Valid() bool {
 	switch k {
-	case KeyTypeBABE, KeyTypeGRANDPA, KeyTypeImOnline:
+	case KeyTypeBABE, KeyTypeGRANDPA, KeyTypeImOnline, KeyTypeAura:
 		return true
 	default:
 		return false

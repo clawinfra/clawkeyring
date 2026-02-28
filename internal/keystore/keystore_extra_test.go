@@ -56,7 +56,7 @@ func TestDecryptAfterReopen(t *testing.T) {
 	assert.Equal(t, expected, decrypted)
 }
 
-// TestListKeysAllThreeKeys verifies all 3 key types are listed.
+// TestListKeysAllThreeKeys verifies all key types are listed.
 func TestListKeysAllThreeKeys(t *testing.T) {
 	dir := t.TempDir()
 	ks, err := keystore.Init(dir)
@@ -73,7 +73,7 @@ func TestListKeysAllThreeKeys(t *testing.T) {
 
 	entries, err := ks.ListKeys()
 	require.NoError(t, err)
-	assert.Len(t, entries, 3)
+	assert.Len(t, entries, len(keyring.AllKeyTypes()))
 }
 
 // TestInitWritesPublicKeyFile verifies the pub key file contains an age-format pubkey.

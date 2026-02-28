@@ -87,7 +87,7 @@ func importCmd() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			kt := keyring.KeyType(keyType)
 			if !kt.Valid() {
-				return fmt.Errorf("invalid key type %q; must be one of: babe, gran, imon", keyType)
+				return fmt.Errorf("invalid key type %q; must be one of: babe, gran, imon, aura", keyType)
 			}
 
 			raw, err := decodeHexKey(hexKey)
@@ -110,7 +110,7 @@ func importCmd() *cobra.Command {
 	}
 
 	cmd.Flags().StringVar(&keystoreDir, "keystore", envOrDefault("CLAWKEYRING_KEYSTORE", defaultKeystore), "keystore directory")
-	cmd.Flags().StringVar(&keyType, "type", "", "key type: babe, gran, imon")
+	cmd.Flags().StringVar(&keyType, "type", "", "key type: babe, gran, imon, aura")
 	cmd.Flags().StringVar(&hexKey, "hex", "", "hex-encoded private key (0x-prefixed)")
 	cmd.Flags().StringVar(&pubKey, "pub", "", "hex-encoded public key")
 	_ = cmd.MarkFlagRequired("type")
